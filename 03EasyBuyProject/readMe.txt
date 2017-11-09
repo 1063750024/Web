@@ -84,5 +84,79 @@ cookie的机制
 
 
 
+servlet  (控制器)
+
+jsp==>servlet===>java类
+
+01.Servlet就是一个java接口
+02.任何一个Servlet接口的实现类，我们也成为Servlet
+
+
+现在阶段：
+
+Model1模式
+jsp页面负责  ：   
+	1.显示数据（html）  
+	2.处理请求 （java）
+	   2.1:接收用户的请求
+	   2.2:从后台获取数据
+	   2.3:根据返回的结果给用户响应
+	   
+JavaBean  
+
+
+
+今天的阶段
+
+Model2模式
+
+jsp页面负责  ：     显示数据（html）
+servlet：	     处理请求 （java）
+	   1:接收用户的请求
+	   2:从后台获取数据
+	   3:根据返回的结果给用户响应   
+JavaBean  
+
+
+如果我们想实现servlet
+
+1.实现Servlet接口
+2.继承GenericServlet类
+3.继承HttpServlet类     *********
+
+HttpServlet==>继承了GenericServlet==>实现了==》Servlet
+
+
+
+
+
+
+<load-on-startup>1</load-on-startup>
+在服务器启动的时候 初始化servlet ===》 init()!
+
+值务必是正整数！值越小，优先级越高！
+
+
+
+
+url -pattern的匹配 原则
+/login    精确匹配   exact 
+/*        全局匹配  通配符 wildcard
+*.do      扩展名匹配   extension 
+/         默认匹配
+
+
+初始化的参数配置
+01.针对于每一个servlet的初始化参数配置
+   init-param写在了指定的servlet节点中！只能当前servlet访问
+
+
+02.针对于所有servlet的初始化参数配置
+   context-param 单独的节点！规范 写在 web.xml文件的最上方！
+
+
+
+
+
 
 

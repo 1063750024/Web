@@ -87,7 +87,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="tpl-login">
             <div class="tpl-login-content">
                 <div class="tpl-login-title"><span class="glyphicon glyphicon-user"></span>注册用户</div>
-                <form class="am-form tpl-form-line-form" method="post"  action="doRegister.jsp" id="myForm">
+              <!-- form  注册  -->
+                <form  action="register"  class="am-form tpl-form-line-form" method="post"id="myForm">
                     <div class="am-form-group">
                         <input type="text" class="tpl-form-input" name="userName" placeholder="用户名">
                     </div>
