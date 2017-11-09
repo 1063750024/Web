@@ -1,3 +1,4 @@
+<%@page import="java.net.URLEncoder"%>
 <%@page import="com.xdf.bean.Easybuy_User"%>
 <%@page import="com.xdf.service.impl.UserServiceImpl"%>
 <%@page import="com.xdf.service.UserService"%>
@@ -29,24 +30,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
    <%
    /* 
-     现在这个doLogin页面存在的意义
+        现在这个doLogin页面存在的意义
      01.获取login页面用户输入的信息
      02.调用service层得到数据库数据
      03.进行比对返回用户响应
-   
-   
     */
-   //解决post请求乱码问题
-    request.setCharacterEncoding("utf-8");
-     String userName= request.getParameter("userName");
-     String password=  request.getParameter("password");
+    
+    
+     //解决post请求乱码问题
+     request.setCharacterEncoding("utf-8");
+     String name= request.getParameter("userName");
+     String pwd=  request.getParameter("password");
+     
+     String flag=request.getParameter("remFlag");
+     
      
      //调用service层代码
      UserService  service=new UserServiceImpl();
-     Easybuy_User  user= service.login(userName,password);
+     Easybuy_User  user= service.login(name,pwd);
      if(user!=null){
        //存在session作用域中
        session.setAttribute("loginUser", user);
+        if("1".equals(flag)){ //"1"表示用户勾选记住密码
+         Cookie userName=new Cookie("userName",URLEncoder.encode(name, "utf-8")); 
+          userName.setMaxAge(60*60*24*7);
+          userName.setPath("/");
+          response.addCookie(userName);
+        }
      }else{
        //重定向到login.jsp
        response.sendRedirect("login.jsp");
