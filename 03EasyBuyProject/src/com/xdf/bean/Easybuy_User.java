@@ -14,8 +14,8 @@ public class Easybuy_User {
 	private int id; // 主键
 	private int sex; // 性别(1:男 0：女)
 	private String loginName; // 登录名
-	private String password; // 登录名
-	private String userName; // 密码
+	private String password; // 密码
+	private String userName; // 真实姓名
 	private String identityCode; // 身份证号
 	private String email; // 邮箱
 	private String mobile; // 手机号

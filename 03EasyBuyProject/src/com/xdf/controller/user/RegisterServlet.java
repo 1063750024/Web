@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 import com.xdf.bean.Easybuy_User;
-import com.xdf.service.UserService;
-import com.xdf.service.impl.UserServiceImpl;
+import com.xdf.service.user.UserService;
+import com.xdf.service.user.impl.UserServiceImpl;
 
 /**
  * 用户的注册

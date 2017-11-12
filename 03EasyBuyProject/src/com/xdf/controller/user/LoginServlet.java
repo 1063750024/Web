@@ -1,6 +1,7 @@
 package com.xdf.controller.user;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 import com.xdf.bean.Easybuy_User;
-import com.xdf.service.UserService;
-import com.xdf.service.impl.UserServiceImpl;
+import com.xdf.service.user.UserService;
+import com.xdf.service.user.impl.UserServiceImpl;
 
 /**
  * 现在这个LoginServlet存在的意义
@@ -43,10 +44,16 @@ public class LoginServlet extends HttpServlet {
 		if (user != null) {
 			// 存在session作用域中
 			request.getSession().setAttribute("loginUser", user);
+			// 跳转到main.jsp
+			List<Easybuy_User> userList = service.findAllUsers();
+			// 把userList放入作用域
+			request.setAttribute("userList", userList);
+			// 转发
+			request.getRequestDispatcher("main.jsp").forward(request, response);
+
 		} else {
 			// 重定向到login.jsp
 			response.sendRedirect("login.jsp");
 		}
 	}
-
 }
