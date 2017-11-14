@@ -93,11 +93,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         User user1=new User(1,"小黑1");
         User user2=new User(2,"小黑2");
         User user3=new User(3,"小黑3");
+        User user4=new User(4,"小黑4");
+        User user5=new User(5,"小黑5");
+        User user6=new User(6,"小黑6");
+        User user7=new User(7,"小黑7");
         
         List<User>  userList=new ArrayList();
         userList.add(user1);
         userList.add(user2);
         userList.add(user3);
+        userList.add(user4);
+        userList.add(user5);
+        userList.add(user6);
+        userList.add(user7);
          //现在把user对象存进session作用域中
         session.setAttribute("list", userList);
        %>
@@ -107,13 +115,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      var：变量，每一个元素的名称   相当于后面的a   for(String a:names)
      varStatus:获取每一行的下标！  隔行换色
      
-     
       -->
-     <c:forEach items="${list}" var="user"  varStatus="" >
-         用户的编号：${user.id }
-         用户的姓名：${user.name}<br/>
-     </c:forEach>
-     
+     <table border="1">
+	     <c:forEach items="${list}" var="user"  varStatus="status">
+	      <c:if test="${status.count%2==0}">
+			     <tr style="background:red">
+		 </c:if>	     
+	      <c:if test="${status.count%2!=0}">
+			     <tr style="background:pink">
+		  </c:if>	     
+			       <td>用户的编号：${user.id }</td>
+			       <td>用户的姓名：${user.name }</td>
+			     </tr>
+		
+	     </c:forEach>
+     </table> 
      
      
      
