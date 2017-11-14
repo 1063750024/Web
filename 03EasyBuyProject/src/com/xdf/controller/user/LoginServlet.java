@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
 		UserService service = new UserServiceImpl();
 		Easybuy_User user = service.login(name, pwd);
 		if (user != null) {
-			// 存在session作用域中
+			// 把登录的用户信息存在session作用域中
 			request.getSession().setAttribute("loginUser", user);
 			// 跳转到main.jsp
 			List<Easybuy_User> userList = service.findAllUsers();
