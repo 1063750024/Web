@@ -22,4 +22,9 @@ public interface UserService {
 	 */
 	List<Easybuy_User> findAllUsers(Object... params);
 
+	/**
+	 * 新增用户
+	 */
+	public boolean addUser(Easybuy_User user);
+
 }

@@ -58,4 +58,17 @@ public class UserServiceImpl implements UserService {
 		return list;
 	}
 
+	/**
+	 * 新增用户
+	 */
+	@Override
+	public boolean addUser(Easybuy_User user) {
+		int num = dao.add(user);
+		if (num > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 }

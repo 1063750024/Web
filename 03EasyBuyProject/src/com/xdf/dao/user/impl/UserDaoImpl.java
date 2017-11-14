@@ -15,11 +15,11 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 	 */
 	@Override
 	public int add(Easybuy_User user) {
-		String sql = "INSERT INTO easybuy_user(loginName,userName,`password`,sex,identityCode,email,mobile,`type`) "
-				+ "VALUES(?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO easybuy_user(loginName,userName,`password`,sex,identityCode,email,mobile) "
+				+ "VALUES(?,?,?,?,?,?,?)";
 		Object[] params = { user.getLoginName(), user.getUserName(),
 				user.getPassword(), user.getSex(), user.getIdentityCode(),
-				user.getEmail(), user.getMobile(), user.getType() };
+				user.getEmail(), user.getMobile() };
 		return executeUpdate(sql, params);
 	}
 

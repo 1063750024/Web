@@ -108,6 +108,17 @@ public class Easybuy_User {
 		this.type = type;
 	}
 
+	public Easybuy_User(int sex, String loginName, String password,
+			String userName, String identityCode, String email, String mobile) {
+		this.sex = sex;
+		this.loginName = loginName;
+		this.password = password;
+		this.userName = userName;
+		this.identityCode = identityCode;
+		this.email = email;
+		this.mobile = mobile;
+	}
+
 	public Easybuy_User() {
 		super();
 	}

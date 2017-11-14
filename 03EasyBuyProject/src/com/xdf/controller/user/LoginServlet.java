@@ -1,7 +1,6 @@
 package com.xdf.controller.user;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -44,13 +43,9 @@ public class LoginServlet extends HttpServlet {
 		if (user != null) {
 			// 把登录的用户信息存在session作用域中
 			request.getSession().setAttribute("loginUser", user);
-			// 跳转到main.jsp
-			List<Easybuy_User> userList = service.findAllUsers();
-			// 把userList放入作用域
-			request.setAttribute("userList", userList);
-			// 转发
-			request.getRequestDispatcher("main.jsp").forward(request, response);
-
+			// 转发给listServlet
+			request.getRequestDispatcher("/listServlet").forward(request,
+					response);
 		} else {
 			// 重定向到login.jsp
 			response.sendRedirect("login.jsp");
