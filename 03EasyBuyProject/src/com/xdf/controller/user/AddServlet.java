@@ -49,8 +49,7 @@ public class AddServlet extends HttpServlet {
 		boolean flag = userService.addUser(user);
 		if (flag) {
 			// 重新从数据库中查询一遍数据
-			// 转发给listServlet
-			req.getRequestDispatcher("/listServlet").forward(req, resp);
+			resp.sendRedirect("listServlet");
 		} else {
 			resp.sendRedirect("add.jsp");// 后台不能加 /
 		}

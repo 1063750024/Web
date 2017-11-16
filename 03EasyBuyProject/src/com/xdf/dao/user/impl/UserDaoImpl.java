@@ -35,10 +35,14 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 		return user;
 	}
 
+	/**
+	 * 删除
+	 */
 	@Override
-	public int delete(Serializable s) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int delete(Serializable id) {
+		String sql = "delete from easybuy_user where id=? ";
+		Object[] params = { id };
+		return executeUpdate(sql, params);
 	}
 
 	@Override

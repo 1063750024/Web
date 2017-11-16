@@ -71,4 +71,19 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
+	/**
+	 * 删除用户
+	 */
+	@Override
+	public boolean deleteUser(String id) {
+		int num = dao.delete(id);
+		if (num > 0) {
+			log.debug("删除用户信息成功！");
+			return true;
+		} else {
+			log.debug("删除用户信息失败！");
+			return false;
+		}
+	}
+
 }

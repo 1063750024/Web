@@ -107,7 +107,7 @@ mobile 手机号	 -->
 										<i class="icon-edit icon-white"></i>  
 										修改                                            
 									</a>
-									<a class="btn btn-danger" href="javascript:del();">
+									<a class="btn btn-danger" href="javascript:del('deleteServlet?id=${user.id}');">
 										<i class="icon-trash icon-white"></i> 
 										删除
 									</a>
@@ -131,8 +131,11 @@ mobile 手机号	 -->
 				<p>请慎重考虑是否删除...</p>
 			</div>
 			<div class="modal-footer">
-				<a href="#" class="btn" data-dismiss="modal">确定</a>
+				<a href="#" class="btn" data-dismiss="modal">取消</a>
+				<a href="#" class="btn" onClick="delSubmit();">确定</a>
 			</div>
+			<!--隐藏域  -->
+			<input type="hidden" id="url">
 		</div>		
 			
 			
@@ -177,8 +180,17 @@ mobile 手机号	 -->
 	
 	<!-- 自定义的jquery -->
 	<script type="text/javascript">
-	   function del(){
+	   function del(delUrl){
 	     $("#myModal").modal("show");
+	     //把删除的路径赋值给隐藏域
+	     $("#url").val(delUrl);
+	   }
+	   
+	   
+	   
+	   //模态窗口中真正的删除
+	   function delSubmit(){
+	   window.location.href= $("#url").val();//deleteServlet?id=${user.id}
 	   }
 	  
 	</script>

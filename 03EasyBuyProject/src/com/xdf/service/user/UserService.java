@@ -27,4 +27,9 @@ public interface UserService {
 	 */
 	public boolean addUser(Easybuy_User user);
 
+	/**
+	 * 删除用户
+	 */
+	public boolean deleteUser(String id);
+
 }
