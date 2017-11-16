@@ -3,6 +3,7 @@ package com.xdf.controller.user;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,6 +20,7 @@ import com.xdf.service.user.impl.UserServiceImpl;
      02.调用service层得到数据库数据
      03.进行比对返回用户响应  
  */
+@WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 
 	private Logger log = Logger.getLogger(LoginServlet.class);

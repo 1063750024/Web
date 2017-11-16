@@ -1,4 +1,4 @@
-package com.xdf.controller.user;
+package com.xdf.controller.news;
 
 import java.io.IOException;
 
@@ -8,11 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.xdf.service.user.UserService;
-import com.xdf.service.user.impl.UserServiceImpl;
-
-@WebServlet("/deleteServlet")
-public class DeleteServlert extends HttpServlet {
+@WebServlet("/newsServlet")
+public class NewsServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -23,16 +20,30 @@ public class DeleteServlert extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		// 获取method
+		String method = req.getParameter("method");
 
-		String id = req.getParameter("id");
-		// 调用service的代码
-		UserService service = new UserServiceImpl();
+		switch (method) {
+		case "addNews":
+			addNews();
+			break;
+		case "delNews":
+			delNews();
+			break;
 
-		boolean flag = service.deleteUser(id);
-		if (flag) {
-			// 删除成功之后
-			resp.sendRedirect("listServlet");
+		default:
+			break;
 		}
+
+	}
+
+	private void delNews() {
+		System.out.println("shanchu");
+	}
+
+	// 新增
+	private void addNews() {
+		System.out.println("add");
 
 	}
 

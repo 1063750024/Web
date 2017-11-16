@@ -5,7 +5,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 <!-- 引入jstl标签库 -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE HTML>
 <html>
   <head>
     <base href="<%=basePath%>">
@@ -46,97 +46,75 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
   
   <body>
-  
-  	<div class="row-fluid sortable">		
+  <div class="row-fluid sortable">
 				<div class="box span12">
 					<div class="box-header well" data-original-title>
-						<h2><i class="icon-user"></i>当前登录用户名：${sessionScope.loginUser.loginName}</h2>
+						<h2><i class="icon-edit"></i>修改页面</h2>
 						<div class="box-icon">
 							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
 							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
 							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
 						</div>
 					</div>
-					
-				
-	
-<!-- loginName 登录名
-userName  用户名
-sex 性别(1:男 0：女)
-identityCode 身份证号
-email 邮箱
-mobile 手机号	 -->		
-					
-					
-									
-					
 					<div class="box-content">
-					<!-- 新增     按钮 -->
-					<a class="btn btn-success" href="add.jsp">
-					<i class="icon-zoom-in icon-white"></i>新增</a>	
-					
-						<table class="table table-striped table-bordered bootstrap-datatable datatable">
-						  <thead>
-							  <tr>
-								  <th>登录名</th>
-								  <th>真实姓名</th>
-								  <th>性别</th>
-								  <th>身份证号</th>
-								  <th>邮箱</th>
-								  <th>手机号</th>
-								  <th>操作</th>
-							  </tr>
-						  </thead>   
-						  <tbody>
-						  <c:forEach items="${userList}" var="user" >
-						  	<tr>
-								<td>${user.loginName}</td>
-								<td class="center">${user.userName}</td>
-								<td class="center">${user.sex}</td>
-								<td class="center">${user.identityCode}</td>
-								<td class="center">${user.email}</td>
-								<td class="center">
-									<span class="label label-success">${user.mobile}</span>
-								</td>
-									<td class="center">
-									<a class="btn btn-info" href="updateUser?id=${user.id}&method=findById">
-										<i class="icon-edit icon-white"></i>  
-										修改                                            
-									</a>
-									<a class="btn btn-danger" href="javascript:del('deleteServlet?id=${user.id}');">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-						  </c:forEach>
-						  </tbody>
-					  </table>            
+					<!--  form表单  -->
+						<form  action="updateUser?method=update" class="form-horizontal"  method="post">
+						<!-- 设置后台需要的id -->
+						<input  type="hidden"  name="id" value="${updateUser.id}"/>
+						  <fieldset>
+							<div class="control-group">
+							  <label class="control-label" for="typeahead">昵称(登录用户名):</label>
+							  <div class="controls">
+								<input type="text" class="span6 typeahead" value="${updateUser.loginName}" name="loginName" id="typeahead"/>
+							  </div>
+							</div>
+						
+							<div class="control-group">
+	 				  <label class="control-label" for="typeahead">真实用户名:</label>
+					  <div class="controls">
+						<input type="text"  name="userName" value="${updateUser.userName}" class="span6 typeahead" id="typeahead"/>
+					  </div>
 					</div>
-				</div><!--/span-->
-			
-			</div><!--/row-->
-		
-	<!-- 模态窗口 -->	
-	<div class="modal hide fade" id="myModal">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">x</button>
-				<h3>确认删除</h3>
-			</div>
-			<div class="modal-body">
-				<p>请慎重考虑是否删除...</p>
-			</div>
-			<div class="modal-footer">
-				<a href="#" class="btn" data-dismiss="modal">取消</a>
-				<a href="#" class="btn" onClick="delSubmit();">确定</a>
-			</div>
-			<!--隐藏域  -->
-			<input type="hidden" id="url">
-		</div>		
-			
-			
-			
-			
+					
+					  <div class="control-group">
+								<label class="control-label">性别</label>
+								<div class="controls">
+								  <label class="radio">
+									<input type="radio" <c:if test="${updateUser.sex==1}">checked </c:if> name="sex" id="optionsRadios1" value="1">
+									男
+								  </label>
+								  <div style="clear:both"></div>
+								  <label class="radio"> 
+									<input type="radio"  <c:if test="${updateUser.sex==0}">checked </c:if> name="sex" id="optionsRadios2" value="0">
+									女
+								  </label>
+								</div>
+							  </div>
+					
+					
+							
+							<div class="control-group">
+							  <label class="control-label" for="typeahead">邮箱:</label>
+							  <div class="controls">
+								<input type="text" name="email" value="${updateUser.email}" class="span6 typeahead" id="typeahead"/>
+							  </div>
+							</div>
+							<div class="control-group">
+							  <label class="control-label" for="typeahead">手机号:</label>
+							  <div class="controls">
+								<input type="text" name="mobile" value="${updateUser.mobile}" class="span6 typeahead" id="typeahead"/>
+							  </div>
+							</div>
+							
+							<div class="form-actions">
+							  <button type="submit" class="btn btn-primary">修改</button>
+							  <button type="reset" class="btn">重置</button>
+							</div>
+						  </fieldset>
+						</form>   
+
+					</div>
+  	
 		<!--  少一个 jquery 核心js库 -->
 			<script type="text/javascript" src="static/bootstrap/js/jquery-1.7.2.min.js"></script>
 	<script src="static/bootstrap/js/jquery-ui-1.8.21.custom.min.js"></script>
@@ -176,17 +154,8 @@ mobile 手机号	 -->
 	
 	<!-- 自定义的jquery -->
 	<script type="text/javascript">
-	   function del(delUrl){
+	   function del(){
 	     $("#myModal").modal("show");
-	     //把删除的路径赋值给隐藏域
-	     $("#url").val(delUrl);
-	   }
-	   
-	   
-	   
-	   //模态窗口中真正的删除
-	   function delSubmit(){
-	   window.location.href= $("#url").val();//deleteServlet?id=${user.id}
 	   }
 	  
 	</script>

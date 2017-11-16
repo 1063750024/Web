@@ -86,4 +86,35 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
+	/**
+	 * 查询指定的用户信息
+	 */
+	@Override
+	public Easybuy_User findOne(String id) {
+		Easybuy_User user = dao.findOne(id);
+		if (user != null) {
+			log.debug("查询指定的用户信息成功！");
+			return user;
+		} else {
+			log.debug("没有查询到指定的用户信息！");
+			return null;
+		}
+
+	}
+
+	/**
+	 * 修改用户
+	 */
+	@Override
+	public boolean update(Easybuy_User user) {
+		int num = dao.update(user);
+		if (num > 0) {
+			log.debug("修改用户信息成功！");
+			return true;
+		} else {
+			log.debug("修改用户信息失败！");
+			return false;
+		}
+	}
+
 }

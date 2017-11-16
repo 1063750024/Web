@@ -32,4 +32,14 @@ public interface UserService {
 	 */
 	public boolean deleteUser(String id);
 
+	/**
+	 * 查询指定的用户信息
+	 */
+	public Easybuy_User findOne(String id);
+
+	/**
+	 * 修改用户
+	 */
+	public boolean update(Easybuy_User user);
+
 }

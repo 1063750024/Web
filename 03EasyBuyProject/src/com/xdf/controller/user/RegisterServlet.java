@@ -3,6 +3,7 @@ package com.xdf.controller.user;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,6 +22,7 @@ import com.xdf.service.user.impl.UserServiceImpl;
  * @author 小葱拌豆腐
  * 2017-11-9下午12:04:48
  */
+@WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
 
 	private Logger log = Logger.getLogger(RegisterServlet.class);

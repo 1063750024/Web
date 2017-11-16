@@ -45,10 +45,15 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 		return executeUpdate(sql, params);
 	}
 
+	/**
+	 * 修改用户
+	 */
 	@Override
 	public int update(Easybuy_User t) {
-		// TODO Auto-generated method stub
-		return 0;
+		String sql = "update  easybuy_user  set  loginName=?,userName=?,email=?,sex=?,mobile=? where id=? ";
+		Object[] params = { t.getLoginName(), t.getUserName(), t.getEmail(),
+				t.getSex(), t.getMobile(), t.getId() };
+		return executeUpdate(sql, params);
 	}
 
 	/**
@@ -65,9 +70,10 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 	}
 
 	@Override
-	public Easybuy_User findOne(Object... objects) {
-		// TODO Auto-generated method stub
-		return null;
+	public Easybuy_User findOne(Object... id) {
+		String sql = "select * from  easybuy_user where id=?";
+		rs = executeQuery(sql, id);
+		return ResultSetUtil.findOne(rs, Easybuy_User.class);
 	}
 
 }

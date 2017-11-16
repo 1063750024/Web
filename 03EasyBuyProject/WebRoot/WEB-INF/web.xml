@@ -6,71 +6,10 @@
 	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
   <display-name></display-name>	
   
-  <!--01.配置的登录servlet  -->
-  <servlet>
-    <servlet-name>loginServlet</servlet-name>
-    <servlet-class>com.xdf.controller.user.LoginServlet</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-    <servlet-name>loginServlet</servlet-name>
-    <url-pattern>/login</url-pattern>
-  </servlet-mapping>
   
   
   
-  
-  
-  <!-- 02.配置注册的servlet -->
-  <servlet>
-	  <servlet-name>registerServlet</servlet-name>
-	  <servlet-class>com.xdf.controller.user.RegisterServlet</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-     <servlet-name>registerServlet</servlet-name>
-     <url-pattern>/register</url-pattern>
-  </servlet-mapping>
-  
-  
-  <!--03.配置新增servlet  -->
-  
-   <servlet>
-	  <servlet-name>addServlet</servlet-name>
-	  <servlet-class>com.xdf.controller.user.AddServlet</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-     <servlet-name>addServlet</servlet-name>
-     <url-pattern>/addServlet</url-pattern>
-  </servlet-mapping>
-  <!--04.配置查询所有用户的servlet  -->
-  
-   <servlet>
-	  <servlet-name>listServlet</servlet-name>
-	  <servlet-class>com.xdf.controller.user.ListUserServlert</servlet-class>
-  </servlet>
-     <servlet-mapping>
-     <servlet-name>listServlet</servlet-name>
-     <url-pattern>/listServlet</url-pattern>
-  </servlet-mapping>
 
-  <!--05.删除  -->
- 
-   <servlet>
-	  <servlet-name>deleteServlet</servlet-name>
-	  <servlet-class>com.xdf.controller.user.DeleteServlert</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-     <servlet-name>deleteServlet</servlet-name>
-     <url-pattern>/deleteServlet</url-pattern>
-  </servlet-mapping>
-  
-  
-  
-  
-  
   <!-- 欢迎界面 -->
   <welcome-file-list>
     <welcome-file>login.jsp</welcome-file>
