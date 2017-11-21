@@ -70,16 +70,25 @@ public class CharsetFilter implements Filter {
 		 * 放行的条件
 		 * 01.请求中有用户信息   
 		 * 02.请求的路径有login
-		 * 
+			getRequestURL===>http://localhost:8080/08Filter/login  统一资源定位符
+			getRequestURI===>/08Filter/login  项目名+请求地址
+			getContextPath===>/08Filter   项目名
+			getServletPath===>/login    请求地址
+			03.请求中.js .css .jpg
+			04.请求不能是.jsp
 		 */
 		String userName = (String) req.getSession().getAttribute("user");
 		// 获取用户请求的路径
-		System.out.println("getRequestURI===>" + req.getRequestURI());
-		System.out.println("getRequestURL===>" + req.getRequestURL());
-		System.out.println("getContextPath===>" + req.getContextPath());
-		System.out.println("getServletPath===>" + req.getServletPath());
+		String path = req.getRequestURI();
+		if (path.indexOf("login") > -1
+				|| userName != null
+				|| (path.contains(".css") || path.contains(".js")
+						|| path.contains(".jpg") || !path.contains(".jsp"))) {
+			chain.doFilter(request, response); // 放行
+		} else {
+			resp.sendRedirect("login.jsp");
+		}
 
-		chain.doFilter(request, response);
 	}
 
 	/**
