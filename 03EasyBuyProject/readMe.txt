@@ -156,6 +156,64 @@ url -pattern的匹配 原则
 
 
 
+Filter  过滤器
+
+init   服务器启动的时候  初始化
+doFilter  用户每访问一次项目，进入一次
+destroy   服务器关闭的时候执行
+
+
+
+ * 如果我们使用的是注解开发！
+ * filter的执行顺序和 类名的首字母有关系   A  >   B  >  C
+ * 
+ * 如果自己想控制执行顺序  需要引入外部jar包 使用@WebFilterSort中的value
+ HttpServletRequest才有getSession() 所以需要向下转型
+		 放行的条件
+		01.请求中有用户信息   
+		02.请求的路径有login
+			getRequestURL===>http://localhost:8080/08Filter/login  统一资源定位符
+			getRequestURI===>/08Filter/login  项目名+请求地址
+			getContextPath===>/08Filter   项目名
+			getServletPath===>/login    请求地址
+			03.请求中.js .css .jpg
+			04.请求不能是.jsp
+
+
+
+数据源   DataSource  是配置在服务器中！
+   创建连接 交给连接池！
+   javax.sql.DataSource  建立与数据库的连接！
+
+
+服务器没开启？ 有数据源吗？ 有连接池吗？
+
+
+连接池  Connection Pool   
+     01.连接池中的连接由数据源提供
+     02.负责管理和释放连接
+     03.是一种缓冲池技术
+     04.自动分配连接对象和对闲置的连接对象进行回收
+     05.配置在Tomcat中conf/context.xml文件中
+
+JDBC 常用的API？？
+Conncetion
+DriverManager
+Statment
+ResultSet
+ResultSetMetaData
+
+
+我们想通过JDBC技术访问数据库，就必须使用JDBC API！
+
+现在想使用数据源和连接池技术访问数据库，必须使用JNDI！
+JNDI （Java Naming And  Direcoty  Interface）  java命名和目录接口！
+
+
+
+
+
+
 
 
 

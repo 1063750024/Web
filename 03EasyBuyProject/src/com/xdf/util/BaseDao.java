@@ -1,10 +1,14 @@
 package com.xdf.util;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 
 /**
  * 
@@ -26,7 +30,7 @@ public class BaseDao {
 
 	/**
 	 * 所有dao中公共的连接数据库的方法
-	 */
+	 
 	protected static boolean getConnection() {
 		try {
 			// 1.使用反射机制加载驱动包
@@ -43,6 +47,25 @@ public class BaseDao {
 			e.printStackTrace();
 			return false;
 		}
+		return true;
+	}*/
+
+	/**
+	 * 使用JNDI数据源访问数据库
+	 */
+	protected static boolean getConnection() {
+		// 通过服务器的上下文信息 获取数据源
+		try {
+			Context context = new InitialContext();
+			DataSource dataSource = (DataSource) context
+					.lookup("java:comp/env/jdbc/easybuy");
+			con = dataSource.getConnection();
+		} catch (NamingException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
 		return true;
 	}
 
