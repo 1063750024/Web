@@ -24,6 +24,12 @@ public class LoginServlet extends HttpServlet {
 		// 获取用户的输入
 		String userName = req.getParameter("userName");
 		System.out.println(userName);
+		if (userName != null && !"".equals(userName)) {
+			req.getSession().setAttribute("user", userName); // 保存用户信息
+			resp.sendRedirect("main.jsp");
+		} else {
+			resp.sendRedirect("login.jsp");
+		}
 
 	}
 
