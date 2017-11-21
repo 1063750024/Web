@@ -46,6 +46,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
   
   <body>
+  <jsp:include page="left.jsp"/>
+  
   <div class="row-fluid sortable">
 				<div class="box span12">
 					<div class="box-header well" data-original-title>
