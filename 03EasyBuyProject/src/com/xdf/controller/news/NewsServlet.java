@@ -83,7 +83,7 @@ public class NewsServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		System.out.println("默认的临时文件位置》》》"
-				+ System.getProperty("java.io.temdir"));
+				+ System.getProperty("java.io.tmpdir"));
 
 		// 1.创建DiskFileItemFactory的实例对象 设置缓冲区大小 ，存放位置 ，可以不设置，有默认值
 		DiskFileItemFactory factory = new DiskFileItemFactory();
@@ -91,7 +91,6 @@ public class NewsServlet extends HttpServlet {
 		ServletFileUpload upload = new ServletFileUpload(factory);
 		// 3.判读是否为文件上传类型
 		boolean flag = upload.isMultipartContent(req);
-
 		// 创建新闻对象 便于后续接收
 		Easybuy_News news = new Easybuy_News();
 
@@ -128,9 +127,10 @@ public class NewsServlet extends HttpServlet {
 							file.mkdirs();
 						}
 						String fileName = item.getName(); // 上传文件的名称
+						// 解决文件上传乱码
+						fileName = new String(fileName.getBytes(), "utf-8");
 						// 判断用户是否选择文件
 						if (!"".equals(fileName) && null != fileName) {
-
 							File saveFile = new File(uploadPath, fileName);
 							item.write(saveFile); // 真正的写入磁盘
 							news.setImg(uploadPath + fileName); // 写入数据库
@@ -146,7 +146,6 @@ public class NewsServlet extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-
 		}
 
 		// 调用service层代码
