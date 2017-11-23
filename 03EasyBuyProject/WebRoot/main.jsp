@@ -48,9 +48,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
 
 
-<jsp:include page="left.jsp"/>
   
-  	<div  style="float:right"  class="sortable" >		
+  	<div  class="sortable" >		
 				<div class="box span9">
 					<div class="box-header well" data-original-title>
 						<h2><i class="icon-user"></i>当前登录用户名：${sessionScope.loginUser.loginName}</h2>
