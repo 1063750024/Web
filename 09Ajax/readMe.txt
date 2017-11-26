@@ -60,8 +60,21 @@ Ajax的核心对象 XMLHttpRequest
   
    
    
-   
-   
+Jquery来实现Ajax！  简化了我们的ajax代码！
+
+   $.ajax({
+      url:服务器地址,
+      type:请求方式,
+      data:需要传递给后台的数据,
+      dataType:希望服务器返回的数据类型,  xml  html  json  text  script
+      timeout:请求的超时事件,
+      cache:默认为true,设置成false 就不会从浏览器缓存中查询,
+      contentType:默认值就是 application/x-www-from-urlencoding ,
+      beforeSend:发送请求之前执行的函数,
+      success:成功之后执行的函数,
+      error:失败之后执行的函数,
+      complete:请求完成之后执行的函数，无论失败或者是成功
+   });
    
    
    
