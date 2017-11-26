@@ -24,13 +24,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   
   <!--Ajax 验证昵称是否存在 
-    为了验证是否是局部刷新，我们实现放置一个图片
-  -->
+    为了验证是否是局部刷新，我们实现放置一个图片-->
   
   昵称:<input type="text" name="nickName" onblur="validate();" required>
-  <div  id="result"></div>
-  
- <img src="images/cat.jpg" alt="这是一只可爱的小猫咪"/>
+    <div  id="result"></div>
+    <img src="images/cat.jpg" alt="这是一只可爱的小猫咪"/>
  
   
 <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
@@ -69,10 +67,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         var  sendData="userName="+$userName;
         xhr.send(sendData);
   }
-
-
-
-
 
 </script>
   

@@ -19,7 +19,6 @@ import com.xdf.bean.Student;
  */
 @WebServlet("/studentList")
 public class StudentServlet extends HttpServlet {
-
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -38,7 +37,6 @@ public class StudentServlet extends HttpServlet {
 		Student stu4 = new Student(4, "小白4", 0, "海淀4");
 		Student stu5 = new Student(5, "小白5", 1, "海淀5");
 		Student stu6 = new Student(6, "小白6", 0, "海淀6");
-
 		// 创建list集合
 		List<Student> list = new ArrayList<Student>();
 		list.add(stu1);

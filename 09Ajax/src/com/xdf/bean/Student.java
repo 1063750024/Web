@@ -8,10 +8,10 @@ package com.xdf.bean;
  * 2017-11-26上午11:08:54
  */
 public class Student {
-	private Integer id;
-	private String name;
+	private Integer id; // 学生编号
+	private String name; // 学生姓名
 	private Integer sex; // 0 女 1 男
-	private String address;
+	private String address;// 学生住址
 
 	public Integer getId() {
 		return id;
