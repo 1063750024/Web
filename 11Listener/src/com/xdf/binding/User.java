@@ -34,6 +34,7 @@ public class User implements HttpSessionBindingListener {
 	 * 01.session超时       maxInactiveInterval(5000)  以毫秒为单位   5S
 	 * 02.session失效          invalidate()
 	 * 03.session清除或者修改对象的时候  remove()   再次setAttribute()
+	 * 04.服务器关闭
 	 */
 	@Override
 	public void valueUnbound(HttpSessionBindingEvent event) {

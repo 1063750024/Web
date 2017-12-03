@@ -7,12 +7,31 @@
  * @since JDK1.1
  */ 
     
-1.HttpSessionBindingListener   
+1.HttpSessionBindingListener    ===>对应指定的类 
     只有实现HttpSessionBindingListener接口的类，才能被监听！
     01.valueBound   
     02.valueUnBound
   
 
-2.HttpSessionListener 
+2.HttpSessionListener  ===> session（项目）
+     01.sessionCreated
+     02.sessionDestroyed
 
-3.ServletContextListener
+
+   01.需要在wen.xml文件中配置listener节点
+   02.指定的监听器会在项目启动时 初始化
+   03.sessionCreated在用户访问项目的时候 执行
+   04.sessionDestroyed在session失效或者超时的时候执行
+
+
+
+3.ServletContextListener  ===> application
+
+
+
+
+
+
+
+
+

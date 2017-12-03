@@ -13,4 +13,12 @@
   <session-config>
     <session-timeout>1</session-timeout>  <!-- 以分钟为单位 -->
   </session-config>
+  
+  
+  
+  <!-- 如果项目中使用的监听接口是 HttpSessionListener  必须在web.xml文件中设置监听器  -->
+    <listener>
+      <listener-class>com.xdf.session.User</listener-class>
+    </listener>
+  
 </web-app>
