@@ -37,10 +37,10 @@ public class NewsServlet extends HttpServlet {
 		// 获取用户传递过来的当前页
 		String num = req.getParameter("pageIndex");
 		System.out.println(num);
-		if ("" == num || null == num) {
-			util.setPageIndex(1); // 默认第一页
-		} else {
+		if (num != null && num != "") {
 			util.setPageIndex(Integer.parseInt(num));
+		} else {
+			util.setPageIndex(1);
 		}
 		List<Easybuy_News> list = dao.findAllNewsByPage(util);
 		if (list != null) {

@@ -73,6 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                    $(data).each(function(){
                      if(this.util!=null){
                        pageIndex=  this.util.pageIndex;
+                       alert("pageIndex"+pageIndex);
                        pageSize=  this.util.pageSize;
                        pageCount=  this.util.pageCount;
                        totalCount=  this.util.totalCount;
@@ -113,10 +114,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	     $("#next").hide();
 	  }
      });
-    
-    
-    
-    
+ 
     
     });
   

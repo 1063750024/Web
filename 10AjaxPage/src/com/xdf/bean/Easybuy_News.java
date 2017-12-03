@@ -69,13 +69,14 @@ public class Easybuy_News {
 	}
 
 	public Easybuy_News(Integer id, String title, String content,
-			Date createTime, String img) {
+			Date createTime, String img, PageUtil util) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.content = content;
 		this.createTime = createTime;
 		this.img = img;
+		this.util = util;
 	}
 
 	public Easybuy_News() {
@@ -85,7 +86,8 @@ public class Easybuy_News {
 	@Override
 	public String toString() {
 		return "Easybuy_News [id=" + id + ", title=" + title + ", content="
-				+ content + ", createTime=" + createTime + ", img=" + img + "]";
+				+ content + ", createTime=" + createTime + ", img=" + img
+				+ ", util=" + util + "]";
 	}
 
 }
