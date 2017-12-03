@@ -13,7 +13,7 @@
     02.valueUnBound
   
 
-2.HttpSessionListener  ===> session（项目）
+2.HttpSessionListener  ===> session（会话）
      01.sessionCreated
      02.sessionDestroyed
 
@@ -25,7 +25,19 @@
 
 
 
-3.ServletContextListener  ===> application
+3.ServletContextListener  ===> application（项目）
+    01.contextInitialized
+    02.contextDestroyed
+    
+   01.需要在wen.xml文件中配置listener节点
+   02.contextInitialized会在服务器启动的时候执行
+   03.contextDestroyed会在服务器关闭的时候执行
+
+web.xml文件中配置的节点执行顺序
+
+context-param -> listener -> filter -> servlet
+
+
 
 
 

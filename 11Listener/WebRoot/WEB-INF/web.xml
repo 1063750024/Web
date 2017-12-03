@@ -20,5 +20,10 @@
     <listener>
       <listener-class>com.xdf.session.User</listener-class>
     </listener>
+    
+   <!-- 如果项目中使用的监听接口是 ServletContextListener  必须在web.xml文件中设置监听器  -->
+    <listener>
+      <listener-class>com.xdf.context.User</listener-class>
+    </listener>
   
 </web-app>
